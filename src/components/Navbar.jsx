@@ -20,9 +20,9 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
     hover:bg-light-gray'
     >
       <span style={{ background: dotColor }}
-        className='absolute inline-flex rounded-full h-2 w-2 right-2 top-2'>
+        className='absolute inline-flex rounded-full h-2 w-2 
+        right-2 top-2'/>
         {icon}
-      </span>
     </button>
   </TooltipComponent>
 )
@@ -30,7 +30,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 const Navbar = () => {
   const { activeMenu, setActiveMenu,
     isClicked, setIsClicked, handleClick,
-    screenSize, setScreenSize } = useStateContext();
+    screenSize, setScreenSize, currentColor } = useStateContext();
   
   useEffect(() => {
     
@@ -57,7 +57,7 @@ const Navbar = () => {
         customFunc={
           () => setActiveMenu((prevActive) => !prevActive)
         }
-        color='cyan'
+        color={currentColor}
         icon={<AiOutlineMenu />}
       />
       <div className='flex'>
@@ -65,7 +65,7 @@ const Navbar = () => {
           customFunc={
             () => handleClick('cart')
           }
-          color='cyan'
+          color={currentColor}
           icon={<FiShoppingCart />}
         />
         <NavButton title='Chat'
@@ -73,7 +73,7 @@ const Navbar = () => {
           customFunc={
             () => handleClick('chat')
           }
-          color='cyan'
+          color={currentColor}
           icon={<BsChatLeft />}
         />
         <NavButton title='Notification'
@@ -81,7 +81,7 @@ const Navbar = () => {
           customFunc={
             () => handleClick('notification')
           }
-          color='cyan'
+          color={currentColor}
           icon={<RiNotification3Line />}
         />
         <TooltipComponent
